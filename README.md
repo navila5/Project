@@ -3,42 +3,43 @@ Natalie Avila
 
 2025-03-07
 
-Introduction
+#Introduction
 library(tidyverse)
-## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-## ✔ dplyr     1.1.4     ✔ readr     2.1.5
-## ✔ forcats   1.0.0     ✔ stringr   1.5.1
-## ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-## ✔ purrr     1.0.2     
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()
-## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+ ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+ ✔ dplyr     1.1.4     ✔ readr     2.1.5
+ ✔ forcats   1.0.0     ✔ stringr   1.5.1
+ ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+ ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+ ✔ purrr     1.0.2     
+ ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+ ✖ dplyr::filter() masks stats::filter()
+ ✖ dplyr::lag()    masks stats::lag()
+ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 setwd("~/Downloads/")
 shark_attacks <- read.csv("~/Downloads/gshark_attacks.csv")
 head(shark_attacks)
-##      date year       type   country               area
-## 1 5/13/23 2023 Unprovoked AUSTRALIA    South Australia
-## 2 4/29/23 2023 Unprovoked AUSTRALIA  Western Australia
-## 3 10/7/22 2022 Unprovoked AUSTRALIA Western  Australia
-## 4 10/4/21 2021 Unprovoked       USA            Florida
-## 5 10/3/21 2021 Unprovoked       USA            Florida
-## 6 5/23/21 2021 Unprovoked       USA     South Carolina
-##                                     location     activity               name
-## 1                                   Elliston      Surfing   Simon Baccanello
-## 2                       Yallingup, Busselton     Swimming               male
-## 3                               Port Hedland Spearfishing        Robbie Peck
-## 4   Fort Pierce State Park, St. Lucie County      Surfing Truman Van Patrick
-## 5                Jensen Beach, Martin County     Swimming               male
-## 6 Burkes Beach, Hilton Head, Beaufort County     Swimming       Wyatt Bowman
-##   sex age fatal_y_n  time     species
-## 1   M  46         Y 10h10 White shark
-## 2   M             N 11h20    1m shark
-## 3   M  38         N 11h30  Bull shark
-## 4   M  25         N                  
-## 5   M             N 12h00            
-## 6   M  26         N          5' shark
+
+     date year       type   country               area
+ 1 5/13/23 2023 Unprovoked AUSTRALIA    South Australia
+ 2 4/29/23 2023 Unprovoked AUSTRALIA  Western Australia
+ 3 10/7/22 2022 Unprovoked AUSTRALIA Western  Australia
+ 4 10/4/21 2021 Unprovoked       USA            Florida
+ 5 10/3/21 2021 Unprovoked       USA            Florida
+ 6 5/23/21 2021 Unprovoked       USA     South Carolina
+                                     location     activity               name
+ 1                                   Elliston      Surfing   Simon Baccanello
+ 2                       Yallingup, Busselton     Swimming               male
+ 3                               Port Hedland Spearfishing        Robbie Peck
+ 4   Fort Pierce State Park, St. Lucie County      Surfing Truman Van Patrick
+ 5                Jensen Beach, Martin County     Swimming               male
+ 6 Burkes Beach, Hilton Head, Beaufort County     Swimming       Wyatt Bowman
+   sex age fatal_y_n  time     species
+ 1   M  46         Y 10h10 White shark
+ 2   M             N 11h20    1m shark
+ 3   M  38         N 11h30  Bull shark
+ 4   M  25         N                  
+ 5   M             N 12h00            
+ 6   M  26         N          5' shark
 Link to my dataset
 https://www.kaggle.com/datasets/gauravkumar2525/shark-attacks?select=global_shark_attacks.csv
 
@@ -49,12 +50,12 @@ Description of Motivation
 I’ve always enjoyed the water and going to the beach. I love getting into the water and going deep enough to the point where I’m swimming. However each time, I would have a little fear that a shark would come up. So, ultimately, I hope to find more information on whether factors like the location or the time of year influences the likelihood of an attack.
 
 Basic summary statistics
-##      date                year          type             country         
-##  Length:368         Min.   :1903   Length:368         Length:368        
-##  Class :character   1st Qu.:1984   Class :character   Class :character  
-##  Mode  :character   Median :2004   Mode  :character   Mode  :character  
-##                     Mean   :1994                                        
-##                     3rd Qu.:2013                                        
+      date                year          type             country         
+  Length:368         Min.   :1903   Length:368         Length:368        
+  Class :character   1st Qu.:1984   Class :character   Class :character  
+  Mode  :character   Median :2004   Mode  :character   Mode  :character  
+                     Mean   :1994                                        
+                     3rd Qu.:2013                                        
 ##                     Max.   :2023                                        
 ##      area             location           activity             name          
 ##  Length:368         Length:368         Length:368         Length:368        
@@ -188,10 +189,10 @@ My Interpretation
 
 So based off of this the coefficients show that for each additional year, the age increases by 0.2 years, so as the year goes up, the average age of the person increases but very slightly. Since the p-value is extremely small this shows that there is a relationship, but the R-squared being around 8.8% indicates the relationship between the two are not strong.
 
-#model <- lm(age ~ year, data = shark_attacks)
-#summary(model)
-At least one t-test between a categorical and quantitative variable in your dataset and your interpretation.
-My Interpretation
+model <- lm(age ~ year, data = shark_attacks)
+summary(model)
+###At least one t-test between a categorical and quantitative variable in your dataset and your interpretation.
+###My Interpretation
 
 The t-test results show no significant difference in the average years of shark attacks between Australia and the USA. The t-statistic of -1.35 and p-value of 0.1808, which is greater than the typical 0.05 threshold, suggest that the difference in means is not statistically significant. The 95% confidence interval (-13.85 to 2.64) includes zero, further supporting the lack of a significant difference. On average, shark attacks in Australia occurred in 1991.87, while in the USA, they occurred in 1997.48, but this difference is likely due to random variation rather than a true effect.
 
@@ -214,6 +215,6 @@ print(t_test_result)
 How can you use this dataset to draw conclusions about a larger population?
 By doing these analysis, I can draw conclusions about broader trends in shark attacks, such as how age, year, and location impact the frequency and nature of shark incidents. This helps with better understanding and predicting future risks in different populations and regions.
 
-Conclusion
-Overarching conclusions from your analysis
+##Conclusion
+###Overarching conclusions from your analysis
 In the Age vs Year of Shark Attacks analysis, the scatter plot and linear regression indicate a weak positive relationship between the age of individuals and the year of the attack. The weak slope of the regression model suggests that while older individuals may be involved in shark attacks in later years, the relationship between age and year of attack is minimal. In the Year by Country analysis, there is no statistically significant difference in the average year of shark attacks between countries like Australia and the USA. While countries with more recorded attacks, such as the USA and Australia, show a wider range of attack years, no noticeable trend or significant relationship between the year of attack and country is evident.
